@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BB2190BE-B61B-4D66-A3FF-7B913B877592}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\External\gl\include;$(SolutionDir)..\External\fmod\inc;$(SolutionDir)..\External\SOIL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;SOIL.lib;glut32.lib;glu32.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\External\gl\lib;$(SolutionDir)..\External\SOIL\lib;$(SolutionDir)..\External\fmod\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>mkdir "$(OutDir)Content"
+IF EXIST "$(SolutionDir)..\content" xcopy /E /Y "$(SolutionDir)..\content" "$(OutDir)Content\"
+IF EXIST "$(ProjectDir)content\" xcopy /E /Y "$(ProjectDir)Content\" "$(OutDir)Content\"
+
+copy "$(SolutionDir)..\External\fmod\fmodex.dll" /Y "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\External\gl\include;$(SolutionDir)..\External\fmod\inc;$(SolutionDir)..\External\SOIL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;SOIL.lib;glut32.lib;glu32.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\External\gl\lib;$(SolutionDir)..\External\SOIL\lib;$(SolutionDir)..\External\fmod\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>mkdir "$(OutDir)Content"
+IF EXIST "$(SolutionDir)..\content" xcopy /E /Y "$(SolutionDir)..\content" "$(OutDir)Content\"
+IF EXIST "$(ProjectDir)content" xcopy /E /Y "$(ProjectDir)Content" "$(OutDir)Content\"
+
+copy "$(SolutionDir)..\External\fmod\fmodex.dll" /Y "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BackgroundManager.cpp" />
+    <ClCompile Include="bomb.cpp" />
+    <ClCompile Include="BombManager.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="endScreen.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameUIManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="lightWall.cpp" />
+    <ClCompile Include="LightWallManager.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="openGLFramework.cpp" />
+    <ClCompile Include="openGLStuff.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="PlayerLifeDisplay.cpp" />
+    <ClCompile Include="PlayerManager.cpp" />
+    <ClCompile Include="soundManager.cpp" />
+    <ClCompile Include="soundSystem.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TronCycle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BackgroundManager.h" />
+    <ClInclude Include="baseTypes.h" />
+    <ClInclude Include="bomb.h" />
+    <ClInclude Include="BombManager.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="endScreen.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="GameUIManager.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="lightWall.h" />
+    <ClInclude Include="LightWallManager.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="openGLFramework.h" />
+    <ClInclude Include="openGLStuff.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="PlayerLifeDisplay.h" />
+    <ClInclude Include="PlayerManager.h" />
+    <ClInclude Include="soundManager.h" />
+    <ClInclude Include="soundSystem.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TronCycle.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
